@@ -6,22 +6,23 @@ import com.selimatasoy.di.applicationModule
 import com.selimatasoy.errors.GenericServerError
 import com.selimatasoy.features.authentication.di.authenticationModule
 import com.selimatasoy.features.healthcheck.di.healthCheckModule
+import com.selimatasoy.features.starwars.di.starWarsModule
 import com.selimatasoy.jwt.JwtManager
 import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.http.*
 import io.ktor.auth.*
 import io.ktor.auth.jwt.*
 import io.ktor.features.*
+import io.ktor.http.*
 import io.ktor.jackson.*
+import io.ktor.request.*
+import io.ktor.response.*
 import org.koin.core.context.startKoin
 import org.koin.ktor.ext.inject
-import org.slf4j.event.*
+import org.slf4j.event.Level
 import java.text.DateFormat
 
 fun main(args: Array<String>) {
-    startKoin { modules(applicationModule, authenticationModule, healthCheckModule) }
+    startKoin { modules(applicationModule, authenticationModule, healthCheckModule, starWarsModule) }
     io.ktor.server.tomcat.EngineMain.main(args)
 }
 
@@ -29,11 +30,11 @@ fun main(args: Array<String>) {
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
 
-    val simpleJwt: JwtManager by inject()
+    val jwtManager: JwtManager by inject()
 
     install(Authentication) {
         jwt {
-            verifier(simpleJwt.getVerifier())
+            verifier(jwtManager.getVerifier())
             validate {
                 UserIdPrincipal(it.payload.getClaim("email").asString())
             }
