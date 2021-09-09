@@ -36,5 +36,5 @@ POST /login/</br>
 GET /userInfo/ (Needs Authroization token from login as Authorization header)</br>
  &nbsp; Return user information</br>
 ## - Star Wars
-GET /movie/</br>
+GET /movie/ (Needs Authroization token from login as Authorization header)</br>
  &nbsp; An External API call example. Returns a movie information from an external api
