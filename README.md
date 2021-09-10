@@ -14,7 +14,7 @@ A Modern Kotlin-Ktor RESTful API example. Connects to a PostgreSQL database and 
 # Architecture
 ![github (6)](https://user-images.githubusercontent.com/86873858/131125468-99d372c5-2b55-473b-9f12-0fbd2c7e9bf7.png)
 
-# Database Creditentials
+# Database Credentials
 resources/application.conf
 ```
     database {
