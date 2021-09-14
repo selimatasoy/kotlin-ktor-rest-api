@@ -40,7 +40,7 @@ class AuthenticationDaoImpl() : AuthenticationDao {
                 it[name] = userInfoDto.name
                 it[surname] = userInfoDto.surname
                 it[email] = userInfoDto.email
-                it[password] = userInfoDto.password
+                it[password] = userInfoDto.password!!
             }
         }
     }

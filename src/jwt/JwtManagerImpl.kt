@@ -7,7 +7,8 @@ import com.selimatasoy.features.authentication.model.LoginRequestDto
 import org.koin.core.component.KoinComponent
 import java.util.*
 
-class JwtManagerImpl(secret:String) : JwtManager, KoinComponent {
+
+class JwtManagerImpl(secret: String) : JwtManager, KoinComponent {
     private val validityInMs = 36_000_00 * 1
     private val algorithm = Algorithm.HMAC256(secret)
 
@@ -20,4 +21,9 @@ class JwtManagerImpl(secret:String) : JwtManager, KoinComponent {
         .sign(algorithm)
 
     override fun getExpiration() = Date(System.currentTimeMillis() + validityInMs)
+
+    override fun getUsernameFromToken(token: String?): String? {
+        return JWT.decode(token).getClaim("email").toString().replace("\"", "")
+    }
+
 }

@@ -14,7 +14,7 @@ fun Application.healthCheckRoutes() {
 
 fun Route.getHealthCheck() {
     val service: HealthCheckData by inject()
-    get("/healthCheck/") {
+    get("/healthCheck") {
         call.respond(object {
             val response = service.getHealthCheckStatus()
         })

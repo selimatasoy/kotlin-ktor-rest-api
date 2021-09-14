@@ -1,5 +1,6 @@
 package com.selimatasoy
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.MissingKotlinParameterException
 import com.selimatasoy.di.applicationModule
@@ -44,6 +45,7 @@ fun Application.module(testing: Boolean = false) {
     install(ContentNegotiation) {
         jackson {
             enable(SerializationFeature.INDENT_OUTPUT)
+            setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL)
             dateFormat = DateFormat.getDateInstance()
         }
     }

@@ -1,5 +1,6 @@
 # kotlin-ktor-rest-api
-A Modern Kotlin-Ktor RESTful API example. Connects to a PostgreSQL database and uses Exposed framework for database operations. Focused on Clean Architecture, SOLID Principles and feautre based development.
+A Modern Kotlin-Ktor RESTful API example. Connects to a PostgreSQL database and uses Exposed framework for database
+operations. Focused on Clean Architecture, SOLID Principles and feature based development.
 
 - Ktor Framework
 - Kotlin
@@ -26,15 +27,18 @@ resources/application.conf
 ```
 # Features
 ## - Health Check
-GET /healthCheck/</br>
- &nbsp; Just returns a simple object</br>
+
+GET /healthCheck</br>
+&nbsp; Just returns a simple object</br>
 ## - Authentication
-POST /createUser/</br>
- &nbsp; Registers a user to the db</br>
-POST /login/</br>
- &nbsp; Returns a jwt token if success</br>
-GET /userInfo/ (Needs Authroization token from login as Authorization header)</br>
- &nbsp; Return user information</br>
+
+POST /createUser</br>
+&nbsp; Registers a user to the db</br>
+POST /login</br>
+&nbsp; Returns a jwt token if success</br>
+GET /userInfo (Needs Authroization token from login as Authorization header)</br>
+&nbsp; Return user information</br>
 ## - Star Wars
-GET /movie/ (Needs Authroization token from login as Authorization header)</br>
- &nbsp; An External API call example. Returns a movie information from an external api
+
+GET /movie (Needs Authroization token from login as Authorization header)</br>
+&nbsp; An External API call example. Returns a movie information from an external api
