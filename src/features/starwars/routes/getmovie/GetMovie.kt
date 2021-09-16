@@ -8,7 +8,7 @@ import org.koin.ktor.ext.inject
 
 fun Route.getMovie() {
     val starWarsData: StarWarsData by inject()
-    get("/movie") {
+    get("/api/v1/star-wars/movie") {
         call.respond(starWarsData.getMovie())
     }
 }

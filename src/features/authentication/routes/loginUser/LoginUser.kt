@@ -10,7 +10,7 @@ import org.koin.ktor.ext.inject
 
 fun Route.loginUser() {
     val authenticationData: AuthenticationData by inject()
-    post("/login") {
+    post("/public-api/v1/authentication/login") {
         val request = call.receive<LoginRequestDto>()
         call.respond(mapOf("token" to authenticationData.login(request)))
     }
