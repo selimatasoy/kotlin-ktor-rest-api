@@ -16,7 +16,7 @@ class JwtManagerImpl(secret: String) : JwtManager, KoinComponent {
 
     override fun generateToken(loginRequestDto: LoginRequestDto): String = JWT.create()
         .withSubject("Authentication")
-        .withClaim("email", loginRequestDto.username)
+        .withClaim("email", loginRequestDto.email)
         .withExpiresAt(getExpiration())
         .sign(algorithm)
 

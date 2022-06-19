@@ -1,9 +1,7 @@
 package com.selimatasoy.extensions
 
-import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
 import org.jetbrains.exposed.sql.Database
-import java.util.*
 
 fun Database.Companion.connectToExampleDatabase() {
     val conf = ConfigFactory.load()

@@ -2,11 +2,13 @@ package com.selimatasoy.httpclient
 
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
-import io.ktor.client.features.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.logging.*
+import io.ktor.client.plugins.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
 import io.ktor.client.request.*
 import io.ktor.http.*
+import io.ktor.serialization.gson.*
+import java.text.DateFormat
 
 class HttpServiceImpl : HttpService {
 
@@ -17,9 +19,10 @@ class HttpServiceImpl : HttpService {
             }
         }
 
-        install(JsonFeature) {
-            serializer = GsonSerializer() {
+        install(ContentNegotiation) {
+            gson {
                 setPrettyPrinting()
+                setDateFormat(DateFormat.LONG)
             }
         }
 
@@ -28,10 +31,12 @@ class HttpServiceImpl : HttpService {
             socketTimeoutMillis = 30000
             requestTimeoutMillis = 30000
         }
+
         install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.ALL
         }
+
         install(DefaultRequest) {
             header(HttpHeaders.ContentType, ContentType.Application.Json)
             header(HttpHeaders.AcceptCharset, Charsets.UTF_8)

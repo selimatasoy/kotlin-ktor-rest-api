@@ -33,22 +33,30 @@ dependencies {
     implementation "io.ktor:ktor-server-tomcat:$ktor_version"
     implementation "ch.qos.logback:logback-classic:$logback_version"
     implementation "io.ktor:ktor-server-core:$ktor_version"
-    implementation "io.ktor:ktor-auth:$ktor_version"
-    implementation "io.ktor:ktor-auth-jwt:$ktor_version"
-    implementation "io.ktor:ktor-jackson:$ktor_version"
+    implementation "io.ktor:ktor-server-auth:$ktor_version"
+    implementation "io.ktor:ktor-server-auth-jwt:$ktor_version"
+    implementation "io.ktor:ktor-server-status-pages:$ktor_version"
+    implementation "io.ktor:ktor-server-call-logging:$ktor_version"
+
+    implementation "io.ktor:ktor-server-content-negotiation:$ktor_version"
+    implementation "io.ktor:ktor-serialization-jackson:$ktor_version"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 
     implementation "io.ktor:ktor-client-okhttp:$ktor_version"
-    implementation "io.ktor:ktor-client-gson:${ktor_version}"
+    implementation "io.ktor:ktor-client-content-negotiation:$ktor_version"
+    implementation "io.ktor:ktor-serialization-gson:$ktor_version"
     implementation "io.ktor:ktor-client-logging-jvm:${ktor_version}"
     implementation "ch.qos.logback:logback-classic:1.2.5"
 
-    implementation "io.insert-koin:koin-ktor:$koin_version"
-    implementation "io.insert-koin:koin-logger-slf4j:$koin_version"
+    implementation ("io.insert-koin:koin-ktor:$koin_version")
+    implementation ("io.insert-koin:koin-logger-slf4j:$koin_version")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jodatime:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.slf4j:slf4j-nop:1.7.30")
     implementation("org.postgresql:postgresql:42.2.2")
+
     testImplementation "io.ktor:ktor-server-tests:$ktor_version"
 }

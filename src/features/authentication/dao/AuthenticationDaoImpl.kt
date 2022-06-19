@@ -2,20 +2,20 @@ package com.selimatasoy.features.authentication.dao
 
 import com.selimatasoy.extensions.connectToExampleDatabase
 import com.selimatasoy.features.authentication.dao.entity.User
-import com.selimatasoy.features.authentication.dao.mapper.fromUserDaoToUserInfo
+import com.selimatasoy.features.authentication.dao.mapper.AuthenticationMapper
 import com.selimatasoy.features.authentication.model.LoginRequestDto
 import com.selimatasoy.features.authentication.model.UserInfoDto
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class AuthenticationDaoImpl() : AuthenticationDao {
+class AuthenticationDaoImpl(private val mapper: AuthenticationMapper) : AuthenticationDao {
 
     override fun login(request: LoginRequestDto): Boolean {
         Database.connectToExampleDatabase()
 
-        val count:Long = transaction {
+        val count: Long = transaction {
             addLogger(StdOutSqlLogger)
-            return@transaction User.select { User.email eq request.username }.count()
+            return@transaction User.select { User.email eq request.email }.count()
         }
         return count.toInt() == 1
     }
@@ -25,7 +25,7 @@ class AuthenticationDaoImpl() : AuthenticationDao {
 
         val userInfo = transaction {
             addLogger(StdOutSqlLogger)
-            return@transaction User.select { User.email eq email }.single().fromUserDaoToUserInfo()
+            return@transaction mapper.fromUserDaoToUserInfo(User.select { User.email eq email }.single())
         }
         return userInfo
     }
@@ -40,6 +40,7 @@ class AuthenticationDaoImpl() : AuthenticationDao {
                 it[name] = userInfoDto.name
                 it[surname] = userInfoDto.surname
                 it[email] = userInfoDto.email
+                it[birthDate] = userInfoDto.birthDate
                 it[password] = userInfoDto.password!!
             }
         }
