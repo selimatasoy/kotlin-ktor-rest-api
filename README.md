@@ -1,6 +1,7 @@
 # kotlin-ktor-rest-api
 A Modern Kotlin-Ktor RESTful API example. Connects to a PostgreSQL database and uses Exposed framework for database
-operations. Focused on Clean Architecture, SOLID Principles and feature based development.
+operations. Focused on Software Architecture, SOLID Principles, dependency injection, testable code and feature based
+development.
 
 - Ktor Framework
 - Kotlin
