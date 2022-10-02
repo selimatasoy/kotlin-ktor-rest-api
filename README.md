@@ -12,12 +12,12 @@ development.
 - Ktor Client -> For External API calls
 - Build Tool -> Gradle
 - Server -> Tomcat
-- API Documentation -> **NOT YET IMPLEMENTED!**
+- POSTMAN Collection for testing API
 
 # Architecture
 ![github (6)](https://user-images.githubusercontent.com/86873858/131125468-99d372c5-2b55-473b-9f12-0fbd2c7e9bf7.png)
 
-# Database Credentials
+# Database Credentials (Please add your PostgreSQL credentials here to connect to your database)
 resources/application.conf
 
 ```
