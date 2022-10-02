@@ -12,6 +12,7 @@ development.
 - Ktor Client -> For External API calls
 - Build Tool -> Gradle
 - Server -> Tomcat
+- Docker support for containerization
 - POSTMAN Collection for testing API
 
 # Architecture
