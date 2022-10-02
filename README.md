@@ -41,9 +41,9 @@ resources/application.conf
 **POST /public-api/v1/authentication/login**</br>
 &nbsp; Returns a jwt token if success</br>
 **GET /api/v1/authentication/userInfo** (Needs Authorization token from login as Authorization header : "Bearer
-{$token}")</br>
+$token")</br>
 &nbsp; Returns the user information</br>
 ## - Star Wars
 
-**GET /api/v1/star-wars/movie** (Needs Authorization token from login as Authorization header : "Bearer {$token}")</br>
+**GET /api/v1/star-wars/movie** (Needs Authorization token from login as Authorization header : "Bearer $token")</br>
 &nbsp; An External API call example. Returns a movie information from an external api
