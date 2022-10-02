@@ -20,19 +20,21 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
-import org.koin.core.context.startKoin
 import org.koin.java.KoinJavaComponent.inject
+import org.koin.ktor.plugin.Koin
+import org.koin.logger.SLF4JLogger
 import org.slf4j.event.Level
 import java.text.DateFormat
 
-fun main(args: Array<String>) {
-    startKoin { modules(applicationModule, authenticationModule, healthCheckModule, starWarsModule) }
-    io.ktor.server.tomcat.EngineMain.main(args)
-}
+fun main(args: Array<String>): Unit = io.ktor.server.tomcat.EngineMain.main(args)
 
 @Suppress("unused") // Referenced in application.conf
-@kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
+
+    install(Koin) {
+        SLF4JLogger()
+        modules(applicationModule, authenticationModule, healthCheckModule, starWarsModule)
+    }
 
     val jwtManager: JwtManager by inject(JwtManager::class.java)
 

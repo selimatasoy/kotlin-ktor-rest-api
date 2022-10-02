@@ -1,0 +1,163 @@
+{
+  "info": {
+    "_postman_id": "7a63e842-e667-41b9-9a94-3f5925c12b2a",
+    "name": "kotlin-ktor-rest-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "authentication",
+      "item": [
+        {
+          "name": "createUser",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"selim\",\"surname\":\"atasoy\",\"birthDate\":\"01.01.1991\",\"email\":\"selim@gmail.com\", \"password\": \"TestTest\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/public-api/v1/authentication/createUser",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "public-api",
+                "v1",
+                "authentication",
+                "createUser"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"selim@gmail.com\", \"password\": \"TestTest\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/public-api/v1/authentication/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "public-api",
+                "v1",
+                "authentication",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "userInfo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBdXRoZW50aWNhdGlvbiIsImV4cCI6MTY2NDcwMTAzNiwiZW1haWwiOiJzZWxpbUBnbWFpbC5jb20ifQ.uCP0qpGFyVgl8mYPrgzMSXJ6VhDT49cYCZ9K_LAPtGI",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8081/api/v1/authentication/userInfo",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "authentication",
+                "userInfo"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "healthcheck",
+      "item": [
+        {
+          "name": "healthCheck",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/public-api/v1/healthCheck",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "public-api",
+                "v1",
+                "healthCheck"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "getmovie",
+      "item": [
+        {
+          "name": "http://localhost:8080/api/v1/star-wars/movie",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBdXRoZW50aWNhdGlvbiIsImV4cCI6MTY2NDcwMTAzNiwiZW1haWwiOiJzZWxpbUBnbWFpbC5jb20ifQ.uCP0qpGFyVgl8mYPrgzMSXJ6VhDT49cYCZ9K_LAPtGI",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8081/api/v1/star-wars/movie",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "star-wars",
+                "movie"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
